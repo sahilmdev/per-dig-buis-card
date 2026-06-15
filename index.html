@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Sahil Mehta · Digital Business Card</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sahil Mehta</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   :root {
     --ink: #1a1a2e;
     --paper: #fff8f0;
@@ -20,11 +14,11 @@
     --violet: #8338ec;
     --sky: #3a86ff;
     --mint: #06d6a0;
-    --linkedin-dark: #0A66C2;
-    --whatsapp-green: #25D366;
     --display: 'Space Grotesk', sans-serif;
     --body: 'Inter', sans-serif;
   }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: var(--body);
@@ -40,7 +34,6 @@
     overflow-x: hidden;
   }
 
-  /* decorative blobs */
   body::before {
     content: '';
     position: fixed;
@@ -73,22 +66,15 @@
     width: 100%;
     max-width: 420px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   @keyframes pop {
-    from {
-      opacity: 0;
-      transform: scale(0.96) translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
   }
 
-  /* header gradient */
   .header {
     background: linear-gradient(135deg, var(--coral) 0%, var(--violet) 100%);
     border-radius: 24px;
@@ -106,9 +92,8 @@
     right: -40px;
     width: 140px;
     height: 140px;
-    border: 3px solid rgba(255, 255, 255, 0.18);
+    border: 3px solid rgba(255,255,255,0.18);
     border-radius: 50%;
-    pointer-events: none;
   }
 
   .eyebrow {
@@ -143,8 +128,8 @@
     margin-top: 16px;
     font-size: 12px;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 999px;
     padding: 6px 14px;
     backdrop-filter: blur(4px);
@@ -170,13 +155,12 @@
     font-family: var(--display);
     font-size: 11px;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255,255,255,0.16);
     border-radius: 8px;
     padding: 6px 11px;
     backdrop-filter: blur(4px);
   }
 
-  /* links grid */
   .links {
     margin-top: 16px;
     display: grid;
@@ -196,76 +180,35 @@
     font-weight: 700;
     font-size: 15px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 6px 0 -2px rgba(26, 26, 46, 0.08);
-    background: #f2eee7; /* fallback, but each link has own color */
+    box-shadow: 0 6px 0 -2px rgba(26,26,46,0.08);
   }
 
-  .link:hover {
-    transform: translateY(-3px);
-  }
-
-  .link:active {
-    transform: translateY(0);
-  }
+  .link:hover { transform: translateY(-3px); }
+  .link:active { transform: translateY(0); }
 
   .link:focus-visible {
     outline: 3px solid var(--ink);
     outline-offset: 2px;
   }
 
-  .link.wide {
-    grid-column: span 2;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  .link.wide { grid-column: span 2; flex-direction: row; align-items: center; justify-content: space-between; }
 
-  .link svg {
-    width: 22px;
-    height: 22px;
-  }
+  .link svg { width: 22px; height: 22px; }
 
-  /* custom color classes */
-  .link-github {
-    background: #2d2f36;
-    color: #ffffff;
-  }
-  .link-linkedin {
-    background: var(--linkedin-dark);
-    color: white;
-  }
-  .link-resume {
-    background: #ffe4cc;
-    color: var(--ink);
-  }
-  .link-whatsapp {
-    background: var(--whatsapp-green);
-    color: white;
-  }
-  .link-email {
-    background: #e3d9ff;
-    color: var(--ink);
-  }
-  
-  /* wide whatsapp (replaced portfolio) */
-  .link-whatsapp-wide {
-    background: var(--whatsapp-green);
-    color: white;
-  }
-  
-  .arrow {
+  .link-1 { background: var(--sun); }
+  .link-2 { background: #0077b5; color: #ffffff; }
+  .link-2 .arrow { color: #ffffff; }
+  .link-3 { background: #ffd6e8; } /* Email block style */
+  .link-4 { background: var(--mint); } /* WhatsApp block style */
+
+  .link .arrow {
     font-size: 18px;
-    font-weight: 600;
-    opacity: 0.8;
   }
 
-  /* save contact button – new behavior: opens add contact intent */
-  .save-contact {
+  .action-btn {
     margin-top: 14px;
     width: 100%;
     padding: 18px;
-    background: var(--ink);
-    color: var(--paper);
     border: none;
     border-radius: 18px;
     font-family: var(--display);
@@ -273,27 +216,19 @@
     font-weight: 800;
     letter-spacing: 0.02em;
     cursor: pointer;
-    transition: transform 0.15s ease, background 0.2s;
-    box-shadow: 0 6px 0 -2px rgba(26, 26, 46, 0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    transition: transform 0.15s ease;
+    box-shadow: 0 6px 0 -2px rgba(26,26,46,0.18);
+    display: block;
+    text-align: center;
+    text-decoration: none;
   }
 
-  .save-contact:hover {
-    transform: translateY(-3px);
-    background: #0f0f25;
-  }
+  .save-contact { background: var(--ink); color: var(--paper); }
+  .resume-btn { background: var(--violet); color: var(--paper); }
 
-  .save-contact:active {
-    transform: translateY(0);
-  }
-
-  .save-contact:focus-visible {
-    outline: 3px solid var(--violet);
-    outline-offset: 2px;
-  }
+  .action-btn:hover { transform: translateY(-3px); }
+  .action-btn:active { transform: translateY(0); }
+  .action-btn:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; }
 
   .footer {
     text-align: center;
@@ -304,27 +239,12 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ink);
-    opacity: 0.45;
+    opacity: 0.4;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .card {
-      animation: none;
-    }
-    .link:hover,
-    .save-contact:hover {
-      transform: none;
-    }
-  }
-
-  /* small adjustment for touch targets */
-  @media (max-width: 480px) {
-    .link {
-      padding: 14px 12px;
-    }
-    .name {
-      font-size: 32px;
-    }
+    .card { animation: none; }
+    .action-btn:hover, .link:hover { transform: none; }
   }
 </style>
 </head>
@@ -338,313 +258,48 @@
     <div class="status">Open to internships</div>
     <div class="tags">
       <span class="tag">Python</span>
+      <span class="tag">Java</span>
+      <span class="tag">Machine Learning</span>
       <span class="tag">React</span>
-      <span class="tag">TensorFlow</span>
-      <span class="tag">Node.js</span>
       <span class="tag">SQL</span>
     </div>
   </div>
 
   <div class="links">
-    <!-- GitHub (wide, dark themed) -->
-    <a class="link wide link-github" href="https://github.com/sahilmehta-dev" target="_blank" rel="noopener noreferrer">
+    <a class="link wide link-1" href="https://github.com/sahilmdev" target="_blank" rel="noopener">
       <span style="display:flex; align-items:center; gap:10px;">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         GitHub
       </span>
       <span class="arrow">↗</span>
     </a>
 
-    <!-- LinkedIn: brand dark blueish + official color -->
-    <a class="link wide link-linkedin" href="https://linkedin.com/in/sahilmehta-tech" target="_blank" rel="noopener noreferrer">
+    <a class="link wide link-2" href="https://linkedin.com/in/sahilmdev" target="_blank" rel="noopener">
       <span style="display:flex; align-items:center; gap:10px;">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM7.114 20.452H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM7.114 20.452H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </span>
       <span class="arrow">↗</span>
     </a>
 
-    <!-- Resume button (left) -->
-    <a class="link link-resume" href="resume.pdf" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-        <line x1="16" y1="13" x2="8" y2="13"/>
-        <line x1="16" y1="17" x2="8" y2="17"/>
-      </svg>
-      Resume
-    </a>
-
-    <!-- WhatsApp – replaced Portfolio, vibrant green -->
-    <a class="link link-whatsapp" href="https://wa.me/919876543210?text=Hi%20Sahil%2C%20found%20your%20card!" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.888-.94-3.13-1.68-4.376-3.812-.331-.566.331-.526.946-1.75.105-.21.052-.395-.05-.59-.103-.195-.6-1.448-.821-1.928-.218-.476-.439-.412-.6-.418-.151-.008-.327-.01-.5-.01-.173 0-.453.065-.694.324-.241.262-.92.9-.92 2.19 0 1.29.94 2.534 1.07 2.71.131.18 1.834 2.79 4.484 3.808 2.65 1.014 2.65.677 3.61.566.96-.105 1.97-.81 2.25-1.591.27-.78.27-1.45.19-1.59-.08-.135-.301-.21-.601-.36z"/>
-        <path d="M12 0C5.376 0 0 5.376 0 12c0 2.124.555 4.116 1.53 5.85L0 24l6.327-1.5A11.96 11.96 0 0012 24c6.624 0 12-5.376 12-12S18.624 0 12 0zm0 21.75A9.7 9.7 0 016.146 20l-.345-.207-3.532.84.864-3.444-.225-.357A9.74 9.74 0 012.25 12C2.25 6.61 6.61 2.25 12 2.25S21.75 6.61 21.75 12 17.39 21.75 12 21.75z"/>
-      </svg>
-      WhatsApp
-    </a>
-
-    <!-- Email (remains) -->
-    <a class="link link-email" href="mailto:sahil.mehta@example.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <path d="M22 6l-10 7L2 6"/>
-      </svg>
+    <!-- Replaced Resume Grid slot with Email Link -->
+    <a class="link link-3" href="mailto:sahilmehta@spit.ac.in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
       Email
     </a>
-    
-    <!-- Additional direct WhatsApp (wide - replaced old "Book a Call", now it's WhatsApp direct) -->
-    <a class="link wide link-whatsapp-wide" href="https://wa.me/919876543210?text=Hey%20Sahil!%20Came%20across%20your%20contact%20card" target="_blank" rel="noopener noreferrer">
-      <span style="display:flex; align-items:center; gap:10px;">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.888-.94-3.13-1.68-4.376-3.812-.331-.566.331-.526.946-1.75.105-.21.052-.395-.05-.59-.103-.195-.6-1.448-.821-1.928-.218-.476-.439-.412-.6-.418-.151-.008-.327-.01-.5-.01-.173 0-.453.065-.694.324-.241.262-.92.9-.92 2.19 0 1.29.94 2.534 1.07 2.71.131.18 1.834 2.79 4.484 3.808 2.65 1.014 2.65.677 3.61.566.96-.105 1.97-.81 2.25-1.591.27-.78.27-1.45.19-1.59-.08-.135-.301-.21-.601-.36z"/>
-          <path d="M12 0C5.376 0 0 5.376 0 12c0 2.124.555 4.116 1.53 5.85L0 24l6.327-1.5A11.96 11.96 0 0012 24c6.624 0 12-5.376 12-12S18.624 0 12 0zm0 21.75A9.7 9.7 0 016.146 20l-.345-.207-3.532.84.864-3.444-.225-.357A9.74 9.74 0 012.25 12C2.25 6.61 6.61 2.25 12 2.25S21.75 6.61 21.75 12 17.39 21.75 12 21.75z"/>
-        </svg>
-        Message on WhatsApp
-      </span>
-      <span class="arrow">↗</span>
+
+    <a class="link link-4" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.888-.94-3.13-1.68-4.376-3.812-.331-.566.331-.526.946-1.75.105-.21.052-.395-.05-.59-.103-.195-.6-1.448-.821-1.928-.218-.476-.439-.412-.6-.418-.151-.008-.327-.01-.5-.01-.173 0-.453.065-.694.324-.241.262-.92.9-.92 2.19 0 1.29.94 2.534 1.07 2.71.131.18 1.834 2.79 4.484 3.808 2.65 1.014 2.65.677 3.61.566.96-.105 1.97-.81 2.25-1.591.27-.78.27-1.45.19-1.59-.08-.135-.301-.21-.601-.36z"/><path d="M12 0C5.376 0 0 5.376 0 12c0 2.124.555 4.116 1.53 5.85L0 24l6.327-1.5A11.96 11.96 0 0012 24c6.624 0 12-5.376 12-12S18.624 0 12 0zm0 21.75A9.7 9.7 0 016.146 20l-.345-.207-3.532.84.864-3.444-.225-.357A9.74 9.74 0 012.25 12C2.25 6.61 6.61 2.25 12 2.25S21.75 6.61 21.75 12 17.39 21.75 12 21.75z"/></svg>
+      WhatsApp
     </a>
   </div>
 
-  <!-- NEW SAVE CONTACT BUTTON: opens native "add contact" view (prefilled vCard via intent / web link) -->
-  <button class="save-contact" id="saveContactBtn">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <line x1="19" y1="8" x2="19" y2="14" />
-      <line x1="16" y1="11" x2="22" y2="11" />
-    </svg>
-    + Save My Contact
-  </button>
+  <!-- Main interaction actions -->
+  <a class="action-btn save-contact" href="tel:+91XXXXXXXXXX">+ Save My Contact</a>
+  <a class="action-btn resume-btn" href="resume.pdf" target="_blank" rel="noopener">View My Resume</a>
 
-  <div class="footer">tap to connect ✦</div>
+  <div class="footer">Thanks for scanning ✦</div>
 </div>
 
-<script>
-  // DETAILS FOR VCARD / CONTACT INTENT (mobile & desktop friendly)
-  // Preset data: name, phone, email, company/title, urls (LinkedIn, GitHub, WhatsApp)
-  // We'll use the Web Share API (if supported) to open native contact picker / add contact via vcard sharing.
-  // For cross-platform best experience: we generate a .vcf blob and use the "share" dialog on mobile,
-  // AND fallback to pre-filled contact creation using platform-specific intents.
-  // However requirement: "the number I have preset should be opened in the contacts for the user to create new profile"
-  // => we provide a mechanism that on click, either shares vCard (so user can add to contacts) OR directly invokes mailto/phone with add-contact intent.
-  // Most modern Android/ iOS support: if we trigger a download .vcf, the OS offers "Add to Contacts". 
-  // But better: use Web Share API if available, else download vCard (opens in contacts app automatically on many devices).
-  // Additionally, we can also try to use the "add contact" intent on Android: `intent://contacts/#/add` but not reliable.
-  // Instead, we generate vCard and share it - the user can directly add to their address book.
-  // Also to satisfy "number should be opened in contacts for the user to create new profile": we will prompt OS share and mention "Add to contacts".
-  // Let's implement modern, clean solution:
-
-  const contactDetails = {
-    firstName: "Sahil",
-    lastName: "Mehta",
-    fullName: "Sahil Mehta",
-    phone: "+919876543210",     // preset number (replace with actual)
-    email: "sahil.mehta@example.com",
-    title: "Software Developer · ML & Web",
-    linkedin: "https://linkedin.com/in/sahilmehta-tech",
-    github: "https://github.com/sahilmehta-dev",
-    portfolio: "https://sahilmehta.dev",   // for card completeness
-    whatsappLink: "https://wa.me/919876543210"
-  };
-
-  // Build complete vCard string with proper fields
-  function buildVCard() {
-    return `BEGIN:VCARD
-VERSION:3.0
-FN:${contactDetails.fullName}
-N:${contactDetails.lastName};${contactDetails.firstName};;;
-TITLE:${contactDetails.title}
-TEL;TYPE=CELL:${contactDetails.phone}
-EMAIL:${contactDetails.email}
-URL;TYPE=LinkedIn:${contactDetails.linkedin}
-URL;TYPE=GitHub:${contactDetails.github}
-URL;TYPE=Portfolio:${contactDetails.portfolio}
-NOTE:Open to internships and collaborations. Reach out via WhatsApp or email.
-END:VCARD`;
-  }
-
-  // Main handler: tries to use Web Share API (shares .vcf file, OS provides "Add to Contacts" dialog)
-  // If share fails or not supported, downloads vcf which on many phones opens "Add contact" automatically.
-  // Also if both fails, shows a friendly prompt with number so user can manually create.
-  async function saveContactHandler() {
-    const vcardData = buildVCard();
-    const blob = new Blob([vcardData], { type: 'text/vcard' });
-    const file = new File([blob], "Sahil_Mehta.vcf", { type: "text/vcard" });
-    
-    // Check if Web Share API is available & can share files
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share({
-          title: "Save contact - Sahil Mehta",
-          text: "Add Sahil Mehta to your contacts",
-          files: [file]
-        });
-        // success, user will see share sheet and can add to contacts
-        return;
-      } catch (shareError) {
-        console.warn("Share error:", shareError);
-        // If user cancelled share, fallback to download silently? We'll still try alternative.
-        if (shareError.name !== "AbortError") {
-          // fallback to download
-        } else {
-          // cancelled by user, do nothing
-          return;
-        }
-      }
-    }
-    
-    // Fallback 1: download the vcard (most devices will open system contact importer)
-    try {
-      const url = URL.createObjectURL(blob);
-      const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = "Sahil_Mehta.vcf";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-      URL.revokeObjectURL(url);
-      
-      // Optionally show a small toast-like hint (very minimal)
-      showBriefMessage("📇 vCard downloaded — open to add contact", 2000);
-    } catch (dlError) {
-      console.error("Download error:", dlError);
-      // Ultimate fallback: open the phone number with pre-filled but user can copy or manually add
-      const phoneNumber = contactDetails.phone;
-      const userConfirm = confirm(`Can't automatically add contact. Tap OK to save ${contactDetails.fullName}'s number (${phoneNumber}) to your device manually.`);
-      if (userConfirm) {
-        // On mobile, tel: opens dialer but some users can save from there.
-        window.location.href = `tel:${phoneNumber}`;
-      }
-    }
-  }
-
-  // simple ephemeral message helper (non-intrusive)
-  function showBriefMessage(msg, duration = 2000) {
-    let toast = document.querySelector('.toast-message');
-    if (toast) toast.remove();
-    toast = document.createElement('div');
-    toast.className = 'toast-message';
-    toast.innerText = msg;
-    toast.style.position = 'fixed';
-    toast.style.bottom = '30px';
-    toast.style.left = '50%';
-    toast.style.transform = 'translateX(-50%)';
-    toast.style.backgroundColor = '#1a1a2e';
-    toast.style.color = '#fff8f0';
-    toast.style.fontFamily = "var(--body)";
-    toast.style.fontWeight = "600";
-    toast.style.fontSize = "14px";
-    toast.style.padding = "10px 20px";
-    toast.style.borderRadius = "100px";
-    toast.style.zIndex = "1000";
-    toast.style.boxShadow = "0 6px 14px rgba(0,0,0,0.2)";
-    toast.style.backdropFilter = "blur(4px)";
-    toast.style.border = "1px solid rgba(255,255,255,0.2)";
-    toast.style.pointerEvents = "none";
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      if (toast && toast.remove) toast.remove();
-    }, duration);
-  }
-
-  // additional enhancement: when clicking Save Contact, we also provide direct vCard generation
-  // but also, requirement: "the number i have preset should be opened in the contacts for the user to create new profile"
-  // to be extra safe: on Android we can also trigger an intent, but universal solution: 
-  // show list of actions? but we built the vCard share/download which is the cleanest.
-  // Additionally, we can detect if it's iOS or Android and show a note. But above covers best.
-  
-  // Let's also add an alternative: if the share download fails, we can generate a Android "add contact" deep link? 
-  // Too specific, but we also show a "copy number" context? no, original request is clear: no file download, rather number opened in contacts.
-  // Wait: The instruction: "save my concat shouldnt give any download file rather the number i have preset should be opened in the contacts for the user to create new profile or stuff makes sense?"
-  // That means they do NOT want a downloadable .vcf file? but the requirement might be contradictory. Actually re-read: "shouldnt give any download file rather the number i have preset should be opened in the contacts for the user to create new profile"
-  // Means: when clicking "Save my Contact", instead of downloading a .vcf file, we should open the contact creation view directly with pre-filled number.
-  // Great! We'll implement more precise behavior: Using platform-specific "add contact" intent (Android: `intent://contacts/#/add` + data) and iOS: we cannot deep link direct add, but we can use `tel:` or prompt.
-  // But there is a new modern approach: on android, you can use `tel:${number}` and then user manually adds. But for better UX we can use vcard sharing as 'add contact' prompt?
-  // However they explicitly said no download file. So we must avoid downloading .vcf file. They want the number to be opened in the contacts for user to create new profile.
-  // Best method: Use Web Share API with vCard (sharing a contact file is not a "download", but opens system share sheet). That's still a file share, but not direct download.
-  // To strictly match: open native contact creation intent on Android: not reliable.
-  // I'll implement a better flow: on click, we create a `mailto:` with vcard inline? no.
-  // Actually simplest: we open a prompt that pre-fills a contact using "add to contacts" via generating a link that opens contact app. On iOS we can use 'tel:' and suggest add contact.
-  // But given constraints, I will use the "Add Contact" via vCard but WITHOUT triggering download dialog? The share api shows 'save to contacts' option on most devices. That's acceptable.
-  // However they don't want a file download. Share API uses a file but it's not a forced download. But might still be considered as file.
-  // Better: Use direct intent for Android & iOS: On iOS we can't, but we show a numeric popup with "Add to Contacts: copy number" and 1-tap copy.
-  // Let's offer the smoothest: generate a contact card using "add contact" via special protocol? Not possible everywhere.
-  // I'll provide an interactive modal that shows the number + email + name and gives option to "Create Contact" with pre-filled info using native contacts://? but for web it's limited.
-  // The most user-friendly: on button click, display a nice overlay showing the phone number with "tap to copy", plus instructions to add manually to contacts.
-  // But requirement says: "the number I have preset should be opened in the contacts for the user to create new profile" — we will open device's contact creation page if possible using "contacts:" scheme? Not standard.
-  // Instead I'll use the best known cross-platform method: generate a .vcf and use Share API, which on both Android and iOS offers "Add to Contacts" without saving to disk as a file (share sheet). That respects the spirit.
-  // Nevertheless I'll also integrate a secondary click that if share fails, we show a non-download interface: a dialog with the number that user can copy and add easily.
-  
-  // Let's keep it robust and aligned: new handler avoids automatic download, but uses share sheet where 'Add to Contacts' is native.
-  // Plus fallback to interactive modal (no forced file download).
-  
-  const saveBtn = document.getElementById('saveContactBtn');
-  
-  async function smartSaveContact() {
-    const vcardBlob = new Blob([buildVCard()], { type: 'text/vcard' });
-    const vcfFile = new File([vcardBlob], "Sahil_Mehta.vcf", { type: "text/vcard" });
-    
-    if (navigator.canShare && navigator.canShare({ files: [vcfFile] })) {
-      try {
-        await navigator.share({
-          title: "Add Sahil Mehta to contacts",
-          files: [vcfFile]
-        });
-        return;
-      } catch (err) {
-        if (err.name !== "AbortError") {
-          // fallback to contact preview
-          showContactPanel();
-        }
-      }
-    } else {
-      // No share API or file sharing not available => present contact info + number to let user create contact manually
-      showContactPanel();
-    }
-  }
-  
-  function showContactPanel() {
-    // creates a small floating card with number, email etc, so user can add manually (no download)
-    const existingPanel = document.querySelector('.manual-contact-panel');
-    if (existingPanel) existingPanel.remove();
-    
-    const panel = document.createElement('div');
-    panel.className = 'manual-contact-panel';
-    panel.innerHTML = `
-      <div style="background: white; border-radius: 32px; padding: 24px 20px; max-width: 340px; margin: 0 auto; text-align: center; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3); border: 1px solid #ffe4cc;">
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 22px; margin-bottom: 8px;">📇 Add to Contacts</h3>
-        <p style="margin-bottom: 16px; opacity: 0.8;">Tap to copy details & create contact</p>
-        <div style="background: #f2eee7; border-radius: 60px; padding: 12px; margin-bottom: 12px; font-weight: 700; font-size: 18px; letter-spacing: 0.5px;">${contactDetails.phone}</div>
-        <button id="copyNumberBtn" style="background: var(--mint); border: none; padding: 12px; border-radius: 40px; font-weight: 800; width: 100%; margin-bottom: 12px; font-family: inherit;">📋 Copy Number</button>
-        <button id="closeContactPanel" style="background: var(--ink); color: white; border: none; padding: 12px; border-radius: 40px; font-weight: 800; width: 100%;">Done / Close</button>
-        <p style="font-size: 11px; margin-top: 14px; opacity: 0.6;">You can now manually create a new contact using the number above.</p>
-      </div>
-    `;
-    panel.style.position = 'fixed';
-    panel.style.bottom = '20px';
-    panel.style.left = '0';
-    panel.style.right = '0';
-    panel.style.zIndex = '999';
-    panel.style.display = 'flex';
-    panel.style.justifyContent = 'center';
-    panel.style.padding = '16px';
-    document.body.appendChild(panel);
-    
-    document.getElementById('copyNumberBtn')?.addEventListener('click', () => {
-      navigator.clipboard.writeText(contactDetails.phone).then(() => {
-        showBriefMessage("✓ Number copied! Add manually to contacts.", 1500);
-        panel.remove();
-      }).catch(() => alert("Copy manually: " + contactDetails.phone));
-    });
-    document.getElementById('closeContactPanel')?.addEventListener('click', () => panel.remove());
-  }
-  
-  saveBtn.addEventListener('click', smartSaveContact);
-</script>
 </body>
 </html>
